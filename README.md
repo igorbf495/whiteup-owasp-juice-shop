@@ -1,4 +1,4 @@
-Usando a feramenta dirb, encontrei arquivos com informações confidênciais:
+Usando a feramenta DirHunter para enemurar diretórios, encontrei arquivos com informações confidênciais:
 ![image](https://github.com/user-attachments/assets/64b93620-0a2e-4f6d-a8d6-e396f8cee894)
 
 /robots.txt
