@@ -65,16 +65,31 @@ olha lá, conseguimos ativar o motor javascript do navegador, logo, encontramos 
 
 ![image](https://github.com/user-attachments/assets/dd3f0ec8-e2af-4d92-9582-de291b904bed)
 
-no endpoint /administration#/contact encontrei uma vulnerabilidade A01:2021-Broken Access Control, A04:2021 – Insecure Design e A03:2021 – Injection
 
-Notei que existe uma certa validação de entrada, é obrigário votar nas estrelas para conseguir publicar um comentário:
+
+4. Bypass de Validação de Feedback (Broken Access Control)
+Categorias OWASP:
+
+A01:2021 – Broken Access Control
+A04:2021 – Insecure Design
+Descrição:
+O feedback exige a seleção de estrelas, mas a validação ocorre apenas no frontend. Através do DevTools, o atributo disabled foi modificado, permitindo enviar um feedback sem estrelas.
+
+Passos para Reproduzir:
+
+Abra o DevTools e remova o atributo disabled do botão.
+Envie o feedback sem selecionar estrelas.
+
+Impacto:
+A ausência de validação no backend compromete a integridade dos dados de feedback.
+
 ![image](https://github.com/user-attachments/assets/a774a46d-498a-4e83-8478-a87fc40b7bd6)
 
 usei a dev tools para procurar se essa validação é feita do lado do cliente (navegador) ou no lado do server
 
 ![image](https://github.com/user-attachments/assets/a6feda3a-af15-446d-850d-020962f008ef)
 
-olha só oq encontrei... então pensei, o que acontece se eu alterar esse parâmetro de disable para enable?
+então pensei, o que acontece se eu alterar esse parâmetro de disable para enable?
 
 ![image](https://github.com/user-attachments/assets/5752f037-794a-4629-9863-22a1486174e3)
 
@@ -87,11 +102,21 @@ feedback enviado.
 Inseguranças no design ocorrem quando o sistema é projetado sem as proteções adequadas para cenários possíveis. Nesse caso, confiar na validação do frontend para forçar uma avaliação mínima de uma estrela é um design inseguro.
 
 
---------
 
-A01:2021 – Broken Access Control
+5. Manipulação de Avaliação de Usuário (Forged Review)
+Categoria OWASP: A01:2021 – Broken Access Control
 
-vi que em ao vc clicar em algum card do produto, voce pode adicionar reviews
+Descrição:
+Ao enviar uma avaliação de produto, o campo author pode ser modificado, permitindo falsificar o autor da avaliação.
+
+Passos para Reproduzir:
+
+Intercepte a requisição POST para /rest/products/1/reviews.
+Modifique o campo author para um e-mail alternativo.
+Envie a requisição.
+
+Impacto:
+Permite a falsificação de avaliações, comprometendo a autenticidade dos feedbacks.
 
 ![image](https://github.com/user-attachments/assets/cd22604c-c120-40d9-bb23-7bb6f608a95e)
 
@@ -118,9 +143,20 @@ após dar enter, voltei ao navegador para verificar oq aconteceu e conseguimos m
 Encontramos mais uma vulnerabilidade de Broken Access Control.
 
 
-------
+6. Registro de Conta com Privilégios de Administrador
+Categoria OWASP: A01:2021 – Broken Access Control
 
-no endpoint /register
+Descrição:
+Durante o registro, o campo role pode ser modificado para criar uma conta com privilégios de administrador, ignorando as restrições normais.
+
+Passos para Reproduzir:
+
+Intercepte a requisição POST para /api/Users ao registrar um novo usuário.
+Adicione o campo "role": "admin" no payload da requisição.
+Envie a requisição modificada.
+
+Impacto:
+Permite que usuários comuns se registrem como administradores, comprometendo a segurança da aplicação.
 
 
 simulei um registro de um user:
@@ -132,8 +168,6 @@ vamos analistar por trás das cameras como está sendo feita essa resquest
 ![image](https://github.com/user-attachments/assets/7fa571ac-5d20-4f64-8f55-b90ac06f7be2)
 
 vemos que estamos mandando um POST para /api/users quando vamos criar um usuário comum. Nota-se que na response dessa request, ele nos mostra um parâmetro que nao tem no lado do cliente. Mas será mesmo? Vamo ver se está fazendo as validações corretas. Bora adicionar esse parâmtro role na request, mas no lugar de costumer, irei colocar "admin".
-
-
 
 
 ![image](https://github.com/user-attachments/assets/24593214-02b1-40a8-bd98-ff620e23451c)
