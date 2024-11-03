@@ -2,9 +2,10 @@ Relatório de Vulnerabilidades – OWASP Juice Shop
 
 Resumo:
 Este relatório detalha várias vulnerabilidades críticas no OWASP Juice Shop, categorizadas conforme o OWASP Top 10. Foram identificadas falhas de Broken Access Control, Cross-Site Scripting (XSS) e Insecure Design, que comprometem a segurança e a integridade da aplicação.
-
+<br>
+<br>
 Enumeração de Diretórios Sensíveis
-
+<br>
 A05:2021 – Security Misconfiguration
 
 Descrição:
@@ -18,9 +19,9 @@ Impacto:
 Esses arquivos expõem informações que podem auxiliar um atacante a identificar endpoints críticos e potenciais pontos de exploração.
 
 ![image](https://github.com/user-attachments/assets/64b93620-0a2e-4f6d-a8d6-e396f8cee894)
-
 <br>
-2. XSS DOM-Based na Barra de Pesquisa de Produtos
+<br>
+XSS DOM-Based na Barra de Pesquisa de Produtos
 
 A03:2021 – Injection
 
@@ -40,8 +41,8 @@ Permite que scripts maliciosos sejam executados no navegador do usuário, compro
 
 ![image](https://github.com/user-attachments/assets/3953128b-66fc-46eb-abbc-e779822f0110)
 
-
-
+<br>
+<br>
 XSS Reflected no Endpoint /track-result
 
 A03:2021 – Injection
@@ -69,11 +70,8 @@ tentei o memso payload do iframe e...
 olha lá, conseguimos ativar o motor javascript do navegador, logo, encontramos um XSS Reflected
 
 ![image](https://github.com/user-attachments/assets/dd3f0ec8-e2af-4d92-9582-de291b904bed)
-
-
-
-
-
+<br>
+<br>
 Bypass de Validação de Feedback (Broken Access Control)
 
 A01:2021 – Broken Access Control
@@ -107,9 +105,8 @@ deu certo, burlamos a validação do botão, será que vamos conseguir enviar co
 feedback enviado.
 
 Inseguranças no design ocorrem quando o sistema é projetado sem as proteções adequadas para cenários possíveis. Nesse caso, confiar na validação do frontend para forçar uma avaliação mínima de uma estrela é um design inseguro.
-
-
-
+<br>
+<br>
 Manipulação de Avaliação de Usuário (Forged Review)
 
 A01:2021 – Broken Access Control
@@ -149,10 +146,11 @@ após dar enter, voltei ao navegador para verificar oq aconteceu e conseguimos m
 ![image](https://github.com/user-attachments/assets/9b792cf1-0c1b-479c-903f-6c5b123255dd)
 
 Encontramos mais uma vulnerabilidade de Broken Access Control.
-
-
+<br>
+<br>
 Registro de Conta com Privilégios de Administrador
-Categoria OWASP: A01:2021 – Broken Access Control
+
+A01:2021 – Broken Access Control
 
 Descrição:
 Durante o registro, o campo role pode ser modificado para criar uma conta com privilégios de administrador, ignorando as restrições normais.
@@ -192,11 +190,10 @@ olhá só, retornou 200, vamos conferir no navegador
 logamos.
 
 ![image](https://github.com/user-attachments/assets/f9e905fd-9c08-4f43-b2e7-4b5f00b1b94c)
-
-
-
-
+<br>
+<br>
 Conclusão e Recomendações
+<br>
 Resumo das Vulnerabilidades Identificadas:
 
 Security Misconfiguration em arquivos e diretórios públicos.
