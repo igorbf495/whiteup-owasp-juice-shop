@@ -3,8 +3,9 @@ Relatório de Vulnerabilidades – OWASP Juice Shop
 Resumo:
 Este relatório detalha várias vulnerabilidades críticas no OWASP Juice Shop, categorizadas conforme o OWASP Top 10. Foram identificadas falhas de Broken Access Control, Cross-Site Scripting (XSS) e Insecure Design, que comprometem a segurança e a integridade da aplicação.
 
-1. Enumeração de Diretórios Sensíveis
-Categoria OWASP: A05:2021 – Security Misconfiguration
+Enumeração de Diretórios Sensíveis
+
+A05:2021 – Security Misconfiguration
 
 Descrição:
 A ferramenta DirHunter revelou diretórios que contêm informações sensíveis:
@@ -12,6 +13,7 @@ A ferramenta DirHunter revelou diretórios que contêm informações sensíveis:
 /robots.txt
 /.well-known/security.txt
 /ftp
+
 Impacto:
 Esses arquivos expõem informações que podem auxiliar um atacante a identificar endpoints críticos e potenciais pontos de exploração.
 
@@ -19,7 +21,8 @@ Esses arquivos expõem informações que podem auxiliar um atacante a identifica
 
 
 2. XSS DOM-Based na Barra de Pesquisa de Produtos
-Categoria OWASP: A03:2021 – Injection
+
+A03:2021 – Injection
 
 Descrição:
 Um Cross-Site Scripting (XSS) DOM-Based foi encontrado na barra de pesquisa de produtos. A entrada do usuário não é sanitizada adequadamente, permitindo a execução de código JavaScript.
@@ -38,8 +41,10 @@ Permite que scripts maliciosos sejam executados no navegador do usuário, compro
 ![image](https://github.com/user-attachments/assets/3953128b-66fc-46eb-abbc-e779822f0110)
 
 
-3. XSS Reflected no Endpoint /track-result
-Categoria OWASP: A03:2021 – Injection
+
+XSS Reflected no Endpoint /track-result
+
+A03:2021 – Injection
 
 Descrição:
 O endpoint /track-result apresenta uma vulnerabilidade de XSS refletido, permitindo a execução de JavaScript via o parâmetro id.
@@ -67,11 +72,11 @@ olha lá, conseguimos ativar o motor javascript do navegador, logo, encontramos 
 
 
 
-4. Bypass de Validação de Feedback (Broken Access Control)
-Categorias OWASP:
+Bypass de Validação de Feedback (Broken Access Control)
 
 A01:2021 – Broken Access Control
 A04:2021 – Insecure Design
+
 Descrição:
 O feedback exige a seleção de estrelas, mas a validação ocorre apenas no frontend. Através do DevTools, o atributo disabled foi modificado, permitindo enviar um feedback sem estrelas.
 
@@ -103,8 +108,9 @@ Inseguranças no design ocorrem quando o sistema é projetado sem as proteções
 
 
 
-5. Manipulação de Avaliação de Usuário (Forged Review)
-Categoria OWASP: A01:2021 – Broken Access Control
+Manipulação de Avaliação de Usuário (Forged Review)
+
+A01:2021 – Broken Access Control
 
 Descrição:
 Ao enviar uma avaliação de produto, o campo author pode ser modificado, permitindo falsificar o autor da avaliação.
@@ -143,7 +149,7 @@ após dar enter, voltei ao navegador para verificar oq aconteceu e conseguimos m
 Encontramos mais uma vulnerabilidade de Broken Access Control.
 
 
-6. Registro de Conta com Privilégios de Administrador
+Registro de Conta com Privilégios de Administrador
 Categoria OWASP: A01:2021 – Broken Access Control
 
 Descrição:
