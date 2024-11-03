@@ -107,7 +107,8 @@ feedback enviado.
 Inseguranças no design ocorrem quando o sistema é projetado sem as proteções adequadas para cenários possíveis. Nesse caso, confiar na validação do frontend para forçar uma avaliação mínima de uma estrela é um design inseguro.
 <br>
 <br>
-Manipulação de Avaliação de Usuário (Forged Review)
+
+Manipulação de Avaliação de Usuário
 
 A01:2021 – Broken Access Control
 
