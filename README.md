@@ -1,8 +1,10 @@
-Relatório de Vulnerabilidades – OWASP Juice Shop
 
-Resumo:
-Este relatório detalha várias vulnerabilidades críticas no OWASP Juice Shop, categorizadas conforme o OWASP Top 10. Foram identificadas falhas de Broken Access Control, Cross-Site Scripting (XSS) e Insecure Design, que comprometem a segurança e a integridade da aplicação.
+### Relatório de Vulnerabilidades – OWASP Juice Shop
+
+Este relatório documenta vulnerabilidades críticas encontradas no OWASP Juice Shop. As falhas foram categorizadas segundo o OWASP Top 10 e incluem Broken Access Control, Cross-Site Scripting (XSS) e Insecure Design, comprometendo a segurança e integridade da aplicação.
+
 <br>
+### Vulnerabilidades Identificadas
 <br>
 Enumeração de Diretórios Sensíveis
 <br>
@@ -26,7 +28,7 @@ XSS DOM-Based na Barra de Pesquisa de Produtos
 A03:2021 – Injection
 
 Descrição:
-Um Cross-Site Scripting (XSS) DOM-Based foi encontrado na barra de pesquisa de produtos. A entrada do usuário não é sanitizada adequadamente, permitindo a execução de código JavaScript.
+Foi identificado um XSS DOM-Based na barra de pesquisa, permitindo a execução de JavaScript não autorizado devido à ausência de sanitização na entrada do usuário.
 
 Passos para Reproduzir:
 
@@ -37,7 +39,7 @@ Insira o payload:
 A execução do código JavaScript é acionada.
 
 Impacto:
-Permite que scripts maliciosos sejam executados no navegador do usuário, comprometendo a integridade da aplicação.
+Scripts maliciosos podem ser executados no navegador do usuário, comprometendo a segurança da aplicação.
 
 ![image](https://github.com/user-attachments/assets/3953128b-66fc-46eb-abbc-e779822f0110)
 
