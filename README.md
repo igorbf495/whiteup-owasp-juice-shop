@@ -72,6 +72,43 @@ após dar enter, voltei ao navegador para verificar oq aconteceu e conseguimos m
 
 ![image](https://github.com/user-attachments/assets/9b792cf1-0c1b-479c-903f-6c5b123255dd)
 
-Encontramos mais uma vulnerabilidade de Broken Access Control
+Encontramos mais uma vulnerabilidade de Broken Access Control.
+
+
+------
+
+no endpoint /register
+
+
+simulei um registro de um user:
+
+![image](https://github.com/user-attachments/assets/45b30949-13bc-4189-bee7-71f7dcef74ae)
+
+vamos analistar por trás das cameras como está sendo feita essa resquest
+
+![image](https://github.com/user-attachments/assets/7fa571ac-5d20-4f64-8f55-b90ac06f7be2)
+
+vemos que estamos mandando um POST para /api/users quando vamos criar um usuário comum. Nota-se que na response dessa request, ele nos mostra um parâmetro que nao tem no lado do cliente. Mas será mesmo? Vamo ver se está fazendo as validações corretas. Bora adicionar esse parâmtro role na request, mas no lugar de costumer, irei colocar "admin".
+
+
+
+
+![image](https://github.com/user-attachments/assets/24593214-02b1-40a8-bd98-ff620e23451c)
+
+dei enter. Vamos lá conferir se criamos o usuário com permissões de admin
+
+![image](https://github.com/user-attachments/assets/cb68bb1e-cb5f-4047-9f98-164f6622d2bf)
+
+olhá só, retornou 200, vamos conferir no navegador
+
+![image](https://github.com/user-attachments/assets/5c670591-06cf-4f21-951e-229bdfabe865)
+
+
+logamos.
+
+![image](https://github.com/user-attachments/assets/f9e905fd-9c08-4f43-b2e7-4b5f00b1b94c)
+
+
+
 
 
