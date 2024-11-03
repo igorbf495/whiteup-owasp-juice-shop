@@ -173,8 +173,7 @@ vamos analistar por trás das cameras como está sendo feita essa resquest
 
 ![image](https://github.com/user-attachments/assets/7fa571ac-5d20-4f64-8f55-b90ac06f7be2)
 
-vemos que estamos mandando um POST para /api/users quando vamos criar um usuário comum. Nota-se que na response dessa request, ele nos mostra um parâmetro que nao tem no lado do cliente. Mas será mesmo? Vamo ver se está fazendo as validações corretas. Bora adicionar esse parâmtro role na request, mas no lugar de costumer, irei colocar "admin".
-
+vemos que estamos mandando um POST para /api/users quando vamos criar um usuário comum. Nota-se que o server nos deu uma resposta, se analisarmos o corpo, ele nos mostra um parâmetro que nao tem no lado do cliente. Mas será mesmo? Vamo ver se está fazendo as validações corretas. Bora adicionar esse parâmtro role que encontramos na reposta, mas, no lugar de costumer, irei colocar "admin".
 
 ![image](https://github.com/user-attachments/assets/24593214-02b1-40a8-bd98-ff620e23451c)
 
