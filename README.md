@@ -1,17 +1,60 @@
-Usando a feramenta DirHunter para enemurar diretórios, encontrei arquivos com informações confidênciais:
-![image](https://github.com/user-attachments/assets/64b93620-0a2e-4f6d-a8d6-e396f8cee894)
+Relatório de Vulnerabilidades – OWASP Juice Shop
+
+Resumo:
+Este relatório detalha várias vulnerabilidades críticas no OWASP Juice Shop, categorizadas conforme o OWASP Top 10. Foram identificadas falhas de Broken Access Control, Cross-Site Scripting (XSS) e Insecure Design, que comprometem a segurança e a integridade da aplicação.
+
+1. Enumeração de Diretórios Sensíveis
+Categoria OWASP: A05:2021 – Security Misconfiguration
+
+Descrição:
+A ferramenta DirHunter revelou diretórios que contêm informações sensíveis:
 
 /robots.txt
 /.well-known/security.txt
 /ftp
+Impacto:
+Esses arquivos expõem informações que podem auxiliar um atacante a identificar endpoints críticos e potenciais pontos de exploração.
 
-XSS Dom based encontrado na barra de pesquisa de produtos:
+![image](https://github.com/user-attachments/assets/64b93620-0a2e-4f6d-a8d6-e396f8cee894)
+
+
+2. XSS DOM-Based na Barra de Pesquisa de Produtos
+Categoria OWASP: A03:2021 – Injection
+
+Descrição:
+Um Cross-Site Scripting (XSS) DOM-Based foi encontrado na barra de pesquisa de produtos. A entrada do usuário não é sanitizada adequadamente, permitindo a execução de código JavaScript.
+
+Passos para Reproduzir:
+
+Acesse a barra de pesquisa.
+Insira o payload:
+  <iframe src="javascript:alert('teste')">
+
+A execução do código JavaScript é acionada.
+
+Impacto:
+Permite que scripts maliciosos sejam executados no navegador do usuário, comprometendo a integridade da aplicação.
+
 ![image](https://github.com/user-attachments/assets/3953128b-66fc-46eb-abbc-e779822f0110)
 
 
-payload: <iframe src="javascript:alert('teste')">
+3. XSS Reflected no Endpoint /track-result
+Categoria OWASP: A03:2021 – Injection
 
-ao navegar até o path /track-result vi que ele passa um id na query string como uma entrada de dados, ou seja, se tem input pode conter um possível xss, não?
+Descrição:
+O endpoint /track-result apresenta uma vulnerabilidade de XSS refletido, permitindo a execução de JavaScript via o parâmetro id.
+
+Passos para Reproduzir:
+
+Navegue até /track-result?id=<payload>.
+Use o payload:
+  <iframe src="javascript:alert('XSS')">
+
+O JavaScript é executado no navegador.
+
+Impacto:
+Scripts maliciosos podem ser refletidos e executados, comprometendo os usuários.
+
 
 ![image](https://github.com/user-attachments/assets/94cd8e85-ea51-4d5e-8f56-d66f8e71ab4e)
 
