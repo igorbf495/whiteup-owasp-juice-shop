@@ -44,5 +44,34 @@ feedback enviado.
 Inseguranças no design ocorrem quando o sistema é projetado sem as proteções adequadas para cenários possíveis. Nesse caso, confiar na validação do frontend para forçar uma avaliação mínima de uma estrela é um design inseguro.
 
 
+--------
+
+A01:2021 – Broken Access Control
+
+vi que em ao vc clicar em algum card do produto, voce pode adicionar reviews
+
+![image](https://github.com/user-attachments/assets/cd22604c-c120-40d9-bb23-7bb6f608a95e)
+
+![image](https://github.com/user-attachments/assets/84ef5964-b46d-4859-83b4-24e22b59f72a)
+
+enviei um comentário de teste usando o burp suite para interceptar a request
+
+![image](https://github.com/user-attachments/assets/4b9b7882-e4d3-4088-9fae-4884f1a60862)
+
+agora, vamos para o burp analisar como a aplicação se comporta por trás das câmeras
+
+![image](https://github.com/user-attachments/assets/bdca5642-dc4c-47a6-afe3-32b7a14bfa69)
+
+Nota-se que temos o parâmetro message e author, mas aos olhos de como deve funcionar, só temos um input para receber os dados do message e não do author. Mas o que acontece se eu tentar alterar esse author antes da requisião chegar lá?
+
+Usando o burp suite como proxy para interceptar eses request alterei o author
+
+![image](https://github.com/user-attachments/assets/abaa7dfa-c5bb-4d80-a690-bdc61edcfa3c)
+
+após dar enter, voltei ao navegador para verificar oq aconteceu e conseguimos mais uma vez.
+
+![image](https://github.com/user-attachments/assets/9b792cf1-0c1b-479c-903f-6c5b123255dd)
+
+Encontramos mais uma vulnerabilidade de Broken Access Control
 
 
