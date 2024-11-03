@@ -19,7 +19,7 @@ Esses arquivos expõem informações que podem auxiliar um atacante a identifica
 
 ![image](https://github.com/user-attachments/assets/64b93620-0a2e-4f6d-a8d6-e396f8cee894)
 
-
+<br>
 2. XSS DOM-Based na Barra de Pesquisa de Produtos
 
 A03:2021 – Injection
