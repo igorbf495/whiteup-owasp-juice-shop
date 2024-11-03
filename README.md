@@ -188,4 +188,16 @@ logamos.
 
 
 
+Conclusão e Recomendações
+Resumo das Vulnerabilidades Identificadas:
+
+Security Misconfiguration em arquivos e diretórios públicos.
+Vulnerabilidades de Injection (XSS DOM-Based e Reflected).
+Broken Access Control e Insecure Design em validações e permissões de feedbacks e contas.
+Recomendações:
+
+Aplicar validações de acesso no backend: Assegure que valores de role e author sejam controlados pelo servidor.
+Sanitizar todas as entradas de usuário: Para prevenir ataques XSS, todas as entradas devem ser sanitizadas.
+Melhorar a segurança de diretórios públicos: Proteja arquivos que contenham informações sensíveis.
+Fortalecer as validações de feedbacks: Assegure que feedbacks inválidos não sejam processados pelo servidor.
 
