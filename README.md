@@ -72,6 +72,8 @@ olha lá, conseguimos ativar o motor javascript do navegador, logo, encontramos 
 
 
 
+
+
 Bypass de Validação de Feedback (Broken Access Control)
 
 A01:2021 – Broken Access Control
